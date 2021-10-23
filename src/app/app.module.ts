@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -13,6 +13,9 @@ import { SecondComponent } from './second/second.component';
 import { ThirdComponent } from './third/third.component';
 import { FourthComponent } from './fourth/fourth.component';
 import { NotfoundComponent } from './notfound/notfound.component';
+import { HeaderComponent } from './header/header.component';
+import { FooterComponent } from './footer/footer.component';
+import { HttpMiddleInterceptor } from './services/http/http-middle.interceptor';
 
 //declarative
 @NgModule({
@@ -25,9 +28,24 @@ import { NotfoundComponent } from './notfound/notfound.component';
     ThirdComponent,
     FourthComponent,
     NotfoundComponent,
+    HeaderComponent,
+    FooterComponent,
   ],
-  imports: [BrowserModule, AppRoutingModule, FormsModule, HttpClientModule],
-  providers: [StorageService],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    FormsModule,
+    HttpClientModule,
+    ReactiveFormsModule,
+  ],
+  providers: [
+    { provide: StorageService },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: HttpMiddleInterceptor,
+      multi: true,
+    },
+  ],
 
   bootstrap: [AppComponent],
 })

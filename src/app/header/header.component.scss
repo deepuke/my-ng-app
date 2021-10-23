@@ -1,0 +1,14 @@
+.header {
+  border: 1px solid #f00;
+  padding: 10px;
+  display: flex;
+  justify-content: space-between;
+  input {
+    flex: 1;
+    margin: 5px;
+  }
+  button {
+    flex: 1;
+    margin: 5px;
+  }
+}
