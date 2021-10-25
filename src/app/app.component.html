@@ -1,21 +1,31 @@
-<h2>Subject and behavior Subject</h2>
+<!-- <h2>Subject and behavior Subject</h2>
 <app-header></app-header>
 <app-footer></app-footer>
 
 <hr />
-<br />
+<br /> -->
 <h2>{{ title | uppercase }}</h2>
 
 <h3>Route area</h3>
-<a routerLink="/first">Go to First</a><br />
-<a routerLink="/second">Go to Second</a><br />
-<a routerLink="/third">Go to Third</a><br />
-<a routerLink="/fourth">Go to Fourth</a><br />
-<a routerLink="/customer">Go to Customer</a>
+<button
+  mat-mini-fab
+  color="primary"
+  [matMenuTriggerFor]="menu"
+  aria-label="Menu items"
+>
+  <mat-icon>menu</mat-icon>
+</button>
+<mat-menu #menu="matMenu">
+  <button mat-menu-item routerLink="/first">Go to First</button>
+  <button mat-menu-item routerLink="/second">Go to Second</button>
+  <a mat-menu-item routerLink="/third">Go to Third</a>
+  <a mat-menu-item routerLink="/fourth">Go to Fourth</a>
+  <a mat-menu-item routerLink="/customer">Go to Customer</a>
+</mat-menu>
 <hr />
 
 <router-outlet></router-outlet>
-
+<!-- 
 <hr />
 <br /><br />
 <p>{{ userObject | json }}</p>
@@ -43,4 +53,4 @@
 
 <hr />
 
-<app-user [user]="userObject" (userEvent)="handleUserEvent($event)"></app-user>
+<app-user [user]="userObject" (userEvent)="handleUserEvent($event)"></app-user> -->

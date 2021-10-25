@@ -1,4 +1,10 @@
 <p>first works!</p>
 
-<input type="text" #food>
-<button (click)="food.value">Submit</button>
+<button mat-raised-button color="primary" (click)="(food.value)">Submit</button>
+
+<mat-form-field class="example-full-width" appearance="fill">
+  <mat-label>Favorite food</mat-label>
+  <input matInput placeholder="Ex. Pizza" value="Sushi" #food />
+</mat-form-field>
+
+{{ food.value }}
